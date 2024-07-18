@@ -1,0 +1,20 @@
+﻿@model Article
+
+@{
+    ViewData["Title"] = "Library App - Details";
+}
+
+<h1>About article @Model.Title</h1>
+
+@if (Model is null)
+{
+    <p>No article found</p>
+}
+else
+{
+    <p>Id: @Model.Id</p>
+    <p>Title: @Model.Title</p>
+    <p>Content: @Model.Content</p>
+}
+
+<a href="@Url.ActionLink("List", "Article")">Come back to the list</a>

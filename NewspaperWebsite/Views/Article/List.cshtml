@@ -1,0 +1,54 @@
+﻿@model List<Article>
+
+@{
+    ViewData["Title"] = "Library App - Articles list";
+}
+
+<h1>Articles</h1>
+
+@if (Model is not null && Model.Count > 0)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Edit</th>
+                <th>Details</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var article in Model)
+            {
+                <tr>
+                    <td>
+                        @article.Id
+                    </td>
+                    <td>
+                        @article.Title
+                    </td>
+                    <td>
+                        @article.Content
+                    </td>
+                    <td>
+                        <a href="@Url.ActionLink("Edit", "Article", new {ArticleId = article.Id})">Edit</a>
+                    </td>
+                    <td>
+                        <a href="@Url.ActionLink("Details", "Article", new {ArticleId = article.Id})">Details</a>
+                    </td>
+                    <td>
+                        <a href="@Url.ActionLink("Delete", "Article", new {ArticleId = article.Id})">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-area="" asp-controller="Article" asp-action="Add">Add new article</a>
+}
+else
+{
+    <p>List empty</p>
+}

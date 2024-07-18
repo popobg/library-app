@@ -1,0 +1,25 @@
+﻿@model NewspaperWebsite.Models.ViewModels.AddArticle
+
+@{
+    ViewData["Title"] = "Library App - Add a new article";
+}
+
+<h1>Add a new article to our collection</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Title" class="control-label">Title</label>
+        <input type="text" asp-for="Title" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Content" class="control-label">Last name</label>
+        <textarea asp-for="Content" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary" asp-action="Add" asp-controller="Article">Create</button>
+    </div>
+
+    <a href="@Url.ActionLink("List", "Student")">Cancel</a>
+</form>
